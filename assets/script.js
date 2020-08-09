@@ -58,6 +58,9 @@ function todayWeather(current){
 }
 
 function forecastWeather(future){
+    forecastTitle = document.getElementById('5day-forecast');
+    forecastTitle.innerHTML = "<h3>5-Day Forecast:</h3>"
+
     forecastDisplay = document.getElementById('forecast');
     forecastDisplay.innerHTML = "";
 
