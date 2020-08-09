@@ -65,9 +65,44 @@ function forecastWeather(future){
     }
 }
 
+function previousSearch() {
+    var location = city;
+
+    if (search.length == 0){
+        
+        search.push(location);
+    }
+    else if(search.indexOf(location) == -1) {
+
+        search.push(location);
+    }
+    
+    localStorage.setItem("search", JSON.stringify(search));
+
+    document.getElementById('list').textContent = "";
+
+    var oList = document.createElement("div");
+    for (i = 0; i < search.length; i++) {
+        var list = document.createElement("ul");
+        list.setAttribute("onclick", "previousClick(this.id)");
+        list.textContent = search[i];
+        var idName = list.textContent;
+        list.setAttribute("id", idName);
+        oList.appendChild(list);
+        document.getElementById('list').appendChild(oList);
+    };
+
+}
+
+function previousClick(clicked_id){
+    city = clicked_id;
+    previousSearch();
+    cityStart();
+}
 
 $(".btn").on("click", function() {
     var input = $("#citySearch");
     city = input.val();
     cityStart();
+    previousSearch();
 });
