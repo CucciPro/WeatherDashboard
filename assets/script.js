@@ -10,9 +10,13 @@ function cityStart() {
     // Call the fetch function passing the url of the API as a parameter
     fetch(startURL)
     .then(function(response){
-        response.json().then(function(data) {
-        getCoord(data);
-        });
+        if (response.ok) {
+            response.json().then(function(data) {
+            getCoord(data);
+            });
+        } else {
+            alert("Error: " + response.statusText);
+        }
     });
 }
 
