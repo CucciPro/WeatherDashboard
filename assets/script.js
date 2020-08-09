@@ -79,13 +79,20 @@ function previousSearch() {
     
     localStorage.setItem("search", JSON.stringify(search));
 
+    getPrevious();
+}
+
+function getPrevious() {
+
+    searchData = JSON.parse(localStorage.getItem("search"));
+
     document.getElementById('list').textContent = "";
 
     var oList = document.createElement("div");
-    for (i = 0; i < search.length; i++) {
+    for (i = 0; i < searchData.length; i++) {
         var list = document.createElement("ul");
         list.setAttribute("onclick", "previousClick(this.id)");
-        list.textContent = search[i];
+        list.textContent = searchData[i];
         var idName = list.textContent;
         list.setAttribute("id", idName);
         oList.appendChild(list);
@@ -106,3 +113,5 @@ $(".btn").on("click", function() {
     cityStart();
     previousSearch();
 });
+
+getPrevious();
