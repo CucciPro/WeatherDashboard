@@ -53,6 +53,19 @@ function todayWeather(current){
     }
 }
 
+function forecastWeather(future){
+    forecastDisplay = document.getElementById('forecast');
+    forecastDisplay.innerHTML = "";
+
+    for (var i = 1; i < 6; i++) {
+        var forecast = document.createElement("div");
+        forecast.setAttribute("class", "badge badge-primary p-3 mb-3 text-left");
+        forecast.innerHTML = "<h6>" + moment().add(i, 'days').format("M/D/YYYY") + "</h6><img src='http://openweathermap.org/img/w/" + future[i].weather[0].icon + ".png'></img><p>Temp: " + future[i].temp.max + " &#8457</p><p>Humidity: " + future[i].humidity + "%</p>";
+        forecastDisplay.appendChild(forecast);    
+    }
+}
+
+
 $(".btn").on("click", function() {
     var input = $("#citySearch");
     city = input.val();
