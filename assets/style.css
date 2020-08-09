@@ -1,0 +1,16 @@
+bg-dark {
+    margin: 300px;
+}
+
+.border {
+    border: 3px solid black;
+}
+
+.badge-primary {
+    margin: 15px;
+}
+
+.search div ul:hover {
+    background-color: #a39f9f;
+    cursor: pointer;
+  }
